@@ -1,5 +1,5 @@
 import {createGrid, Dimensions, Grid} from "./grid";
-import {coordinatePainer, Painter} from "./painter";
+import {coordinatePainer, Direction, Painter} from "./painter";
 import {createBinaryTreeMazeBuilder} from "./mazeBuilder";
 
 
@@ -11,10 +11,20 @@ export function createMaze(dimensions: Dimensions, seed?: string): Grid {
 
 export function paintGrid(grid: Grid, painter: Painter = coordinatePainer): string {
     let result = ""
-    for (let row of grid.rows()) {
+
+    for (let [y, row] of grid.rowsIndexed()) {
         let jobs = []
-        for (let cell of row) {
-            jobs.push(painter(cell))
+        for (let [x, cell] of row) {
+
+            const isLastRow = y === grid.dimensions.height - 1
+            const isLastColumn = x === grid.dimensions.width - 1
+
+            const ops = {
+                omitSouth: !isLastRow,
+                omitEast: !isLastColumn
+            }
+
+            jobs.push(painter(cell, ops))
         }
 
         if (jobs[0] === undefined) return "\n"

@@ -29,6 +29,8 @@ export interface Grid {
     cells(): IterableIterator<Cell>;
 
     rows(): IterableIterator<IterableIterator<Cell>>;
+
+    rowsIndexed(): IterableIterator<[number, IterableIterator<[number, Cell]>]>
 }
 
 
@@ -67,6 +69,10 @@ class SimpleGrid implements Grid {
 
     rows(): IterableIterator<IterableIterator<Cell>> {
         return genRows(this._cells, this.dimensions)
+    }
+
+    rowsIndexed(): IterableIterator<[number, IterableIterator<[number, Cell]>]> {
+        return genRowsIndexed(this._cells, this.dimensions)
     }
 
     north({x, y}: Cell): Cell | undefined {
@@ -109,9 +115,21 @@ function* genRows(grid: Array<Array<Cell>>, dimensions: Dimensions): IterableIte
     }
 }
 
+function* genRowsIndexed(grid: Array<Array<Cell>>, dimensions: Dimensions): IterableIterator<[number, IterableIterator<[number, Cell]>]> {
+    for (let y = 0; y < dimensions.height; y++) {
+        yield [y, genCellsInRowIndexed(grid, dimensions, y)]
+    }
+}
+
 function* genCellsInRow(grid: Array<Array<Cell>>, { width } :Dimensions, y: number): IterableIterator<Cell> {
     for (let x = 0; x < width; x++) {
         yield grid[x][y]
+    }
+}
+
+function* genCellsInRowIndexed(grid: Array<Array<Cell>>, { width } :Dimensions, y: number): IterableIterator<[number, Cell]> {
+    for (let x = 0; x < width; x++) {
+        yield [x, grid[x][y]]
     }
 }
 
