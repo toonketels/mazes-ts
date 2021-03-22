@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`paintMazeCreation() paints every step of maze creation 1`] = `
+"+---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 2`] = `
+"+---+---+---+
+|   |   |   |
++   +---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 3`] = `
+"+---+---+---+
+|   |       |
++   +---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 4`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 5`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|       |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 6`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|           |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 7`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|           |
++---+---+   +
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 8`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|           |
++---+---+   +
+|       |   |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 9`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|           |
++---+---+   +
+|           |
++---+---+---+
+"
+`;
+
+exports[`paintMazeCreation() paints every step of maze creation 10`] = `
+"+---+---+---+
+|   |       |
++   +---+   +
+|           |
++---+---+   +
+|           |
++---+---+---+
+"
+`;

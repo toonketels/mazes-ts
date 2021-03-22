@@ -1,6 +1,6 @@
 node_modules/
-coverage/
-lib/
+/coverage/
+/lib/
 NOTES.md
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider
