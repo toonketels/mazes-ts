@@ -1,9 +1,10 @@
-import {CreateGrid, createGrid as createAGrid, Dimensions, Grid} from "./grid";
-import {coordinatePainer, Direction, Painter} from "./painter";
+import {CreateGrid, createGrid as createAGrid, Dimensions} from "./grid";
+import {coordinatePainer, Painter} from "./painter";
 import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./mazeBuilder";
+import {paintGrid} from "./paintGrid";
 
 
-interface CreateMazeOptions {
+interface PaintMazeOptions {
     dimensions: Dimensions,
     seed?: string,
     createGrid?: CreateGrid,
@@ -11,51 +12,48 @@ interface CreateMazeOptions {
     painter?: Painter
 }
 
+type CreateMazeOptions = Pick<PaintMazeOptions, "dimensions" | "seed" | "createGrid" | "createMazeBuilder">
+
+
 export function paintMaze({
                                dimensions,
                                seed,
-                               createGrid = createAGrid,
-                               createMazeBuilder = createBinaryTreeMazeBuilder,
+                               createGrid,
+                               createMazeBuilder,
                                painter = coordinatePainer
-}: CreateMazeOptions): string {
+}: PaintMazeOptions): string {
 
-    let grid = createGrid({dimensions});
-    let mazeBuilder = createMazeBuilder({grid, seed});
+    let {grid, mazeBuilder} = initMaze({createGrid, dimensions, createMazeBuilder, seed});
 
     mazeBuilder.build()
 
     return paintGrid(grid, painter)
 }
 
-export function paintGrid(grid: Grid, painter: Painter = coordinatePainer): string {
-    let result = ""
+export function* paintMazeCreation({
+                                      dimensions,
+                                      seed,
+                                      createGrid = createAGrid,
+                                      createMazeBuilder = createBinaryTreeMazeBuilder,
+                                      painter = coordinatePainer
+                                  }: PaintMazeOptions): Generator<string> {
 
-    for (let [y, row] of grid.rowsIndexed()) {
-        let jobs = []
-        for (let [x, cell] of row) {
-
-            const isLastRow = y === grid.dimensions.height - 1
-            const isLastColumn = x === grid.dimensions.width - 1
-
-            const ops = {
-                omitSouth: !isLastRow,
-                omitEast: !isLastColumn
-            }
-
-            jobs.push(painter(cell, ops))
-        }
-
-        if (jobs[0] === undefined) return "\n"
-        const linesPerJob = jobs[0].length
+    let grid = createGrid({dimensions});
+    let mazeBuilder = createMazeBuilder({grid, seed});
 
 
-        for (let line = 0; line < linesPerJob; line++) {
-            for (let job = 0; job < jobs.length; job++) {
-                result += jobs[job][line]
-            }
-            result += "\n"
-        }
+    for (let grid of mazeBuilder) {
+        yield paintGrid(grid, painter)
     }
+}
 
-    return result
+function initMaze({
+                      dimensions,
+                      seed,
+                      createGrid = createAGrid,
+                      createMazeBuilder = createBinaryTreeMazeBuilder
+                  }: CreateMazeOptions) {
+    let grid = createGrid({dimensions});
+    let mazeBuilder = createMazeBuilder({grid, seed});
+    return {grid, mazeBuilder};
 }

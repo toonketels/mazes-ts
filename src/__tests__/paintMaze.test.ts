@@ -1,7 +1,7 @@
 import {Painter, wallPainter} from "../painter";
-import {paintMaze, paintGrid} from "../index";
+import {paintMaze} from "../index";
 
-describe("createMaze", () => {
+describe("paintMaze()", () => {
 
     test("should create a maze", () => {
 
@@ -12,7 +12,6 @@ describe("createMaze", () => {
 
         expect(result).toBe(expected)
     })
-
 
     test("should create a bigger maze", () => {
 
