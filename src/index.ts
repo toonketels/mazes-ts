@@ -1,59 +1,25 @@
-import {CreateGrid, createGrid as createAGrid, Dimensions} from "./grid";
-import {coordinatePainer, Painter} from "./painter";
-import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./mazeBuilder";
-import {paintGrid} from "./paintGrid";
+import {paintMazeCreation} from "./lib/lib";
+import {wallPainter} from "./lib/painter";
+import {clearScreen} from 'ansi-escapes'
 
 
-interface PaintMazeOptions {
-    dimensions: Dimensions,
-    seed?: string,
-    createGrid?: CreateGrid,
-    createMazeBuilder?: CreateMazeBuilder,
-    painter?: Painter
+function run() {
+
+    const frames = paintMazeCreation({dimensions: {width: 10, height: 10}, painter: wallPainter});
+
+    const interval = setInterval(() => {
+
+        let { done, value: frame } = frames.next()
+
+        if (done) {
+            clearInterval(interval)
+            process.exit()
+        }
+
+        process.stdout.write(`${clearScreen}${frame}`)
+
+    }, 250);
 }
 
-type CreateMazeOptions = Pick<PaintMazeOptions, "dimensions" | "seed" | "createGrid" | "createMazeBuilder">
-
-
-export function paintMaze({
-                               dimensions,
-                               seed,
-                               createGrid,
-                               createMazeBuilder,
-                               painter = coordinatePainer
-}: PaintMazeOptions): string {
-
-    let {grid, mazeBuilder} = initMaze({createGrid, dimensions, createMazeBuilder, seed});
-
-    mazeBuilder.build()
-
-    return paintGrid(grid, painter)
-}
-
-export function* paintMazeCreation({
-                                      dimensions,
-                                      seed,
-                                      createGrid = createAGrid,
-                                      createMazeBuilder = createBinaryTreeMazeBuilder,
-                                      painter = coordinatePainer
-                                  }: PaintMazeOptions): Generator<string> {
-
-    let grid = createGrid({dimensions});
-    let mazeBuilder = createMazeBuilder({grid, seed});
-
-
-    for (let grid of mazeBuilder) {
-        yield paintGrid(grid, painter)
-    }
-}
-
-function initMaze({
-                      dimensions,
-                      seed,
-                      createGrid = createAGrid,
-                      createMazeBuilder = createBinaryTreeMazeBuilder
-                  }: CreateMazeOptions) {
-    let grid = createGrid({dimensions});
-    let mazeBuilder = createMazeBuilder({grid, seed});
-    return {grid, mazeBuilder};
-}
+// @TODO inject process and interval to make run easily testible
+run()
