@@ -1,12 +1,30 @@
-import {createGrid, Dimensions, Grid} from "./grid";
+import {CreateGrid, createGrid as createAGrid, Dimensions, Grid} from "./grid";
 import {coordinatePainer, Direction, Painter} from "./painter";
-import {createBinaryTreeMazeBuilder} from "./mazeBuilder";
+import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./mazeBuilder";
 
 
-export function createMaze(dimensions: Dimensions, seed?: string): Grid {
-    let grid = createGrid(dimensions);
-    let mazeBuilder = createBinaryTreeMazeBuilder(grid, seed);
-    return mazeBuilder.build()
+interface CreateMazeOptions {
+    dimensions: Dimensions,
+    seed?: string,
+    createGrid?: CreateGrid,
+    createMazeBuilder?: CreateMazeBuilder,
+    painter?: Painter
+}
+
+export function paintMaze({
+                               dimensions,
+                               seed,
+                               createGrid = createAGrid,
+                               createMazeBuilder = createBinaryTreeMazeBuilder,
+                               painter = coordinatePainer
+}: CreateMazeOptions): string {
+
+    let grid = createGrid({dimensions});
+    let mazeBuilder = createMazeBuilder({grid, seed});
+
+    mazeBuilder.build()
+
+    return paintGrid(grid, painter)
 }
 
 export function paintGrid(grid: Grid, painter: Painter = coordinatePainer): string {

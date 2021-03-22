@@ -1,12 +1,11 @@
 import {Painter, wallPainter} from "../painter";
-import {createMaze, paintGrid} from "../index";
+import {paintMaze, paintGrid} from "../index";
 
 describe("createMaze", () => {
 
     test("should create a maze", () => {
 
-        const grid = createMaze({width: 2, height: 2});
-        const result = paintGrid(grid)
+        const result = paintMaze( {dimensions: {width: 2, height: 2}});
 
         const expected = " 00  10 \n" +
                          " 01  11 \n"
@@ -17,8 +16,7 @@ describe("createMaze", () => {
 
     test("should create a bigger maze", () => {
 
-        const grid = createMaze({width: 5, height: 4});
-        const result = paintGrid(grid)
+        const result = paintMaze({dimensions: {width: 5, height: 4}});
 
         const expected =
             " 00  10  20  30  40 \n" +
@@ -30,7 +28,6 @@ describe("createMaze", () => {
     })
 
     test("should accept custom printer", () => {
-        const grid = createMaze({width: 2, height: 2});
         const painter: Painter = ({x, y}) => {
             return [
                 `+----+`,
@@ -38,7 +35,7 @@ describe("createMaze", () => {
                 '+----+'
             ]
         }
-        const result = paintGrid(grid, painter)
+        const result = paintMaze({dimensions: {width: 2, height: 2}, painter});
 
         const expected =
             "+----++----+\n" +
@@ -52,8 +49,7 @@ describe("createMaze", () => {
     })
 
     test("should print the walls with appropriate printer", () => {
-        const grid = createMaze({width: 10, height: 10}, "a seed value");
-        const result = paintGrid(grid, wallPainter)
+        const result = paintMaze({dimensions: {width: 10, height: 10}, seed: "a seed value", painter: wallPainter});
 
         const expected =
             "+---+---+---+---+---+---+---+---+---+---+\n" +

@@ -9,12 +9,6 @@ export interface Cell {
     links: Cell[];
 }
 
-export function createCell(options: Partial<Cell> = {}): Cell {
-    const defaults = {x: 0, y: 0, links: []};
-
-    return {...defaults, ...options};
-}
-
 export interface Grid {
 
     dimensions: Dimensions;
@@ -31,6 +25,20 @@ export interface Grid {
     rows(): IterableIterator<IterableIterator<Cell>>;
 
     rowsIndexed(): IterableIterator<[number, IterableIterator<[number, Cell]>]>
+}
+
+export interface GridOptions {
+    dimensions: Dimensions
+}
+
+export interface CreateGrid {
+    (ops: GridOptions): Grid
+}
+
+export function createCell(options: Partial<Cell> = {}): Cell {
+    const defaults = {x: 0, y: 0, links: []};
+
+    return {...defaults, ...options};
 }
 
 
@@ -104,7 +112,7 @@ class SimpleGrid implements Grid {
 }
 
 // Prevents SimpleGrid from needing to be exported
-export function createGrid(dimensions: Dimensions): Grid {
+export const createGrid: CreateGrid = function createGrid({dimensions}: GridOptions): Grid {
     return new SimpleGrid(dimensions);
 }
 

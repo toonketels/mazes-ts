@@ -1,11 +1,20 @@
 import {Cell, Grid} from "./grid";
-import seedrandom  from "seedrandom";
-import _ from 'lodash'
+import seedrandom from "seedrandom";
+
 import {link} from "./linker";
 
 // @TODO add IterableIterator
 export interface MazeBuilder {
     build(): Grid;
+}
+
+export interface MazeBuilderOps {
+    grid: Grid,
+    seed?: string
+}
+
+export type CreateMazeBuilder = {
+    (options: MazeBuilderOps): MazeBuilder
 }
 
 class BinaryTreeMazeBuilder implements MazeBuilder {
@@ -31,7 +40,7 @@ class BinaryTreeMazeBuilder implements MazeBuilder {
 }
 
 
-export function createBinaryTreeMazeBuilder(grid: Grid, seed?: string): MazeBuilder {
+export const createBinaryTreeMazeBuilder: CreateMazeBuilder = function createBinaryTreeMazeBuilder({grid, seed}) {
     return new BinaryTreeMazeBuilder(grid, seed)
 }
 
