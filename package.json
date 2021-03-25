@@ -25,10 +25,14 @@
   },
   "dependencies": {
     "@types/ansi-escapes": "^4.0.0",
+    "@types/jest-image-snapshot": "^4.3.0",
     "@types/lodash": "^4.14.168",
+    "@types/pngjs": "^6.0.0",
     "@types/seedrandom": "^3.0.0",
     "ansi-escapes": "^4.3.1",
+    "jest-image-snapshot": "^4.4.0",
     "lodash": "^4.17.21",
+    "pngjs": "^6.0.0",
     "seedrandom": "^3.0.5"
   }
 }

@@ -1,5 +1,5 @@
 import {createCell} from "./grid";
-import {wallPainter} from "./painter";
+import {wallPainter} from "./cellPainter";
 
 describe("wallPainter", () => {
 

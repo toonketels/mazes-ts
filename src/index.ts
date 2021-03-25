@@ -1,5 +1,5 @@
 import {paintMazeCreation} from "./lib/lib";
-import {wallPainter} from "./lib/painter";
+import {wallPainter} from "./lib/cellPainter";
 import {clearScreen} from 'ansi-escapes'
 
 

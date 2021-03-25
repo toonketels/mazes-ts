@@ -1,7 +1,18 @@
-import {Grid} from "./grid";
-import {coordinatePainer, Painter} from "./painter";
+import {Cell, Grid} from "./grid";
+import {coordinatePainer, CellPainter} from "./cellPainter";
+import {Painter} from "./lib";
 
-export function paintGrid(grid: Grid, painter: Painter): string {
+export type StringPainter = Painter<string>
+
+export interface StringPainterFactoryOptions {
+    cellPainter?: CellPainter
+}
+
+export function createStringPainter({cellPainter = coordinatePainer}: StringPainterFactoryOptions = {}): StringPainter {
+    return (grid) => stringPainter(grid, cellPainter)
+}
+
+function stringPainter(grid: Grid, painter: CellPainter): string {
     let result = ""
 
     for (let [y, row] of grid.rowsIndexed()) {

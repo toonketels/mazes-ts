@@ -1,22 +1,22 @@
 import {Cell} from "./grid";
 
-export interface PaintOpions {
+export interface CellPaintOptions {
     omitNorth?: boolean;
     omitEast?: boolean;
     omitSouth?: boolean;
     omitWest?: boolean;
 }
 
-export interface Painter {
-    (cell: Cell, options?: PaintOpions): string[];
+export interface CellPainter {
+    (cell: Cell, options?: CellPaintOptions): string[];
 }
 
 export type Direction = "north" | "east" | "south" | "west";
 
-export const coordinatePainer: Painter = cell => {
+export const coordinatePainer: CellPainter = cell => {
     return [` ${cell.x}${cell.y} `]
 }
-export const wallPainter: Painter = (cell, {
+export const wallPainter: CellPainter = (cell, {
     omitNorth,
     omitEast,
     omitSouth,
@@ -39,7 +39,7 @@ export const wallPainter: Painter = (cell, {
 }
 
 
-function isLinked(cell: Cell, direction: Direction): boolean {
+export function isLinked(cell: Cell, direction: Direction): boolean {
     switch(direction) {
         case "north":
             return !!cell.links.find(({y}) => y === cell.y - 1 )

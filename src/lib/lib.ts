@@ -1,48 +1,52 @@
-import {CreateGrid, createGrid as createAGrid, Dimensions} from "./grid";
-import {coordinatePainer, Painter} from "./painter";
+import {CreateGrid, createGrid as createAGrid, Dimensions, Grid} from "./grid";
+import {coordinatePainer, CellPainter} from "./cellPainter";
 import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./mazeBuilder";
-import {paintGrid} from "./paintGrid";
+import {createStringPainter, StringPainter} from "./stringPainter";
 
-interface PaintMazeOptions {
+export type CreateMazeOptions = {
     dimensions: Dimensions,
     seed?: string,
     createGrid?: CreateGrid,
     createMazeBuilder?: CreateMazeBuilder,
-    painter?: Painter
 }
 
-type CreateMazeOptions = Pick<PaintMazeOptions, "dimensions" | "seed" | "createGrid" | "createMazeBuilder">
+export type PaintMazeOptions<T> = CreateMazeOptions & {
+    painter: Painter<T>
+}
 
+export interface Painter<Type> {
+    (grid: Grid): Type
+}
 
-export function paintMaze({
+export function paintMaze<T>({
                                dimensions,
-                               seed,
-                               createGrid,
-                               createMazeBuilder,
-                               painter = coordinatePainer
-}: PaintMazeOptions): string {
+                                 painter: paintGrid,
+                                 seed,
+                                 createGrid,
+                                 createMazeBuilder
+}: PaintMazeOptions<T>): T {
 
     let {grid, mazeBuilder} = initMaze({createGrid, dimensions, createMazeBuilder, seed});
 
     mazeBuilder.build()
 
-    return paintGrid(grid, painter)
+    return paintGrid(grid)
 }
 
-export function* paintMazeCreation({
+export function* paintMazeCreation<T>({
                                       dimensions,
-                                      seed,
-                                      createGrid = createAGrid,
-                                      createMazeBuilder = createBinaryTreeMazeBuilder,
-                                      painter = coordinatePainer
-                                  }: PaintMazeOptions): Generator<string> {
+                                          painter: paintGrid,
+                                          seed,
+                                          createGrid = createAGrid,
+                                          createMazeBuilder = createBinaryTreeMazeBuilder
+                                  }: PaintMazeOptions<T>): Generator<T> {
 
     let grid = createGrid({dimensions});
     let mazeBuilder = createMazeBuilder({grid, seed});
 
 
     for (let grid of mazeBuilder) {
-        yield paintGrid(grid, painter)
+        yield paintGrid(grid)
     }
 }
 
