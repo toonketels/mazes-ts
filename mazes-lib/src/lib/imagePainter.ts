@@ -2,7 +2,7 @@ import { PNG } from 'pngjs'
 import * as fs from 'fs'
 import {Cell, Grid} from "./grid";
 import {isLinked} from "./cellPainter";
-import {Painter} from "./lib";
+import {Painter} from "../index";
 
 export interface ImagePaintResult {
     filePath: string

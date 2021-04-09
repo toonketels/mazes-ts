@@ -1,11 +1,14 @@
-import {paintMazeCreation} from "./lib/lib";
-import {wallPainter} from "./lib/cellPainter";
 import {clearScreen} from 'ansi-escapes'
+
+
+import {paintMazeCreation} from "mazes-lib";
+import {createStringPainter} from "mazes-lib";
+import {wallPainter} from "mazes-lib";
 
 
 function run() {
 
-    const frames = paintMazeCreation({dimensions: {width: 10, height: 10}, painter: wallPainter});
+    const frames = paintMazeCreation({dimensions: {width: 10, height: 10}, painter: createStringPainter({cellPainter: wallPainter})});
 
     const interval = setInterval(() => {
 
@@ -21,5 +24,4 @@ function run() {
     }, 250);
 }
 
-// @TODO inject process and interval to make run easily testible
 run()

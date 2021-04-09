@@ -1,6 +1,6 @@
 import {Cell, Grid} from "./grid";
 import {coordinatePainer, CellPainter} from "./cellPainter";
-import {Painter} from "./lib";
+import {Painter} from "../index";
 
 export type StringPainter = Painter<string>
 

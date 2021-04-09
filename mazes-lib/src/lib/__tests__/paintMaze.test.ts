@@ -1,5 +1,5 @@
 import {CellPainter, wallPainter} from "../cellPainter";
-import {paintMaze} from "../lib";
+import {paintMaze} from "../../index";
 import {createStringPainter} from "../stringPainter";
 import {createImagePainter} from "../imagePainter";
 import fs from "fs/promises";
@@ -56,6 +56,12 @@ describe("paintMaze()", () => {
     })
 
     describe("with imagePainter", () => {
+
+        beforeAll(async () => {
+            try {
+                await fs.mkdir(__dirname + "/__files__")
+            } catch (e) {}
+        })
 
         test("create a picture of the grid instantiated by paintMaze", async () => {
 

@@ -1,5 +1,5 @@
 import {wallPainter} from "../cellPainter";
-import {paintMazeCreation} from "../lib";
+import {paintMazeCreation} from "../../index";
 import {createStringPainter} from "../stringPainter";
 import {createImagePainter} from "../imagePainter";
 import fs from "fs/promises";

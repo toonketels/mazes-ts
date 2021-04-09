@@ -1,7 +1,9 @@
-import {CreateGrid, createGrid as createAGrid, Dimensions, Grid} from "./grid";
-import {coordinatePainer, CellPainter} from "./cellPainter";
-import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./mazeBuilder";
-import {createStringPainter, StringPainter} from "./stringPainter";
+import {CreateGrid, createGrid as createAGrid, Dimensions, Grid} from "./lib/grid";
+import {createBinaryTreeMazeBuilder, CreateMazeBuilder} from "./lib/mazeBuilder";
+
+export * from './lib/stringPainter'
+export * from './lib/imagePainter'
+export * from './lib/cellPainter'
 
 export type CreateMazeOptions = {
     dimensions: Dimensions,

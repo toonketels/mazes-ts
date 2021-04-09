@@ -1,0 +1,40 @@
+{
+  "name": "mazes-lib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "clean": "rm -r dist",
+    "build": "tsc",
+    "build:live": "nodemon --watch 'src/**/*.ts' --exec \\\\\\\\\\\\\\\"ts-node\\\\\\\\\\\\\\\" src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "@types/node": "^14.14.35",
+    "jest": "^26.6.3",
+    "nodemon": "^2.0.7",
+    "ts-jest": "^26.5.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
+  },
+  "dependencies": {
+    "@types/ansi-escapes": "^4.0.0",
+    "@types/faker": "^5.1.7",
+    "@types/jest-image-snapshot": "^4.3.0",
+    "@types/lodash": "^4.14.168",
+    "@types/pngjs": "^6.0.0",
+    "@types/seedrandom": "^3.0.0",
+    "ansi-escapes": "^4.3.1",
+    "faker": "^5.5.0",
+    "jest-image-snapshot": "^4.4.0",
+    "lodash": "^4.17.21",
+    "pngjs": "^6.0.0",
+    "seedrandom": "^3.0.5"
+  }
+}
