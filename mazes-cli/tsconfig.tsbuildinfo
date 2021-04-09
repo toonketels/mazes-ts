@@ -156,11 +156,6 @@
         "signature": "506b80b9951c9381dc5f11897b31fca5e2a65731d96ddefa19687fbc26b23c6e",
         "affectsGlobalScope": true
       },
-      "./lib/index.d.ts": {
-        "version": "114a03ebe20ec459b3a5adfefd70847ea09d33e405d9073d37cd5c99a31c5930",
-        "signature": "114a03ebe20ec459b3a5adfefd70847ea09d33e405d9073d37cd5c99a31c5930",
-        "affectsGlobalScope": false
-      },
       "../node_modules/@types/node/globals.d.ts": {
         "version": "25b4a0c4fab47c373ee49df4c239826ee3430019fc0c1b5e59edc3e398b7468d",
         "signature": "25b4a0c4fab47c373ee49df4c239826ee3430019fc0c1b5e59edc3e398b7468d",
@@ -637,8 +632,8 @@
         "affectsGlobalScope": false
       },
       "./src/index.ts": {
-        "version": "3652fb558a88346bc7b85e4c7d5e442643073f9e89f94bfc6b638414ccdc554a",
-        "signature": "114a03ebe20ec459b3a5adfefd70847ea09d33e405d9073d37cd5c99a31c5930",
+        "version": "9e17b8358bd1bdee765281d9866b78704c5f1577f2c3b8965ecd9e34ae60e147",
+        "signature": "8e609bb71c20b858c77f0e9f90bb1319db8477b13f9f965f1a1e18524bf50881",
         "affectsGlobalScope": false
       },
       "../node_modules/@babel/types/lib/index.d.ts": {
@@ -2122,7 +2117,6 @@
       ]
     },
     "semanticDiagnosticsPerFile": [
-      "./lib/index.d.ts",
       "./src/index.ts",
       "../mazes-lib/dist/index.d.ts",
       "../mazes-lib/dist/lib/cellpainter.d.ts",

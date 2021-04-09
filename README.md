@@ -2,4 +2,9 @@
 
 Playing around with mazes in ts.
 
-`npm start` will run an animation of a maze being created.
+```
+yarn install
+yarn build
+```
+
+`yarn start` will run an animation of a maze being created.
