@@ -3,6 +3,8 @@
   "private": true,
   "scripts": {
     "start": "cd mazes-cli && yarn start:ts",
+    "test": "yarn workspaces run test",
+    "clean": "yarn workspaces run clean",
     "build": "yarn workspaces run build"
   },
   "workspaces": [

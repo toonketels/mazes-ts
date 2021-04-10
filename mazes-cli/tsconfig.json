@@ -3,6 +3,13 @@
   "references": [{"path": "../mazes-lib"}],
   "compilerOptions": {
     "outDir": "dist",                                /* Redirect output structure to the directory. */
-    "rootDir": "src"                               /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "rootDir": "src",
+    /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
+    "lib": [
+      "dom",
+      "es5",
+      "scripthost",
+      "es2015.promise"
+    ]
   }
 }

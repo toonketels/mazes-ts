@@ -4,6 +4,7 @@ node_modules/
 NOTES.md
 __diff_output__
 /src/lib/__tests__/__files__/
+*.tsbuildinfo
 
 .DS_Store
 

@@ -1,0 +1,113 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cli animate the maze building to std out 1`] = `
+"c+---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 2`] = `
+"c+---+---+---+
+|       |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 3`] = `
+"c+---+---+---+
+|       |   |
++---+   +---+
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 4`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|   |   |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 5`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|       |   |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 6`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|           |
++---+---+---+
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 7`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|           |
++---+---+   +
+|   |   |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 8`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|           |
++---+---+   +
+|       |   |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 9`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|           |
++---+---+   +
+|           |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 10`] = `
+"c+---+---+---+
+|       |   |
++---+   +   +
+|           |
++---+---+   +
+|           |
++---+---+---+
+"
+`;
+
+exports[`cli animate the maze building to std out 11`] = `"cundefined"`;
