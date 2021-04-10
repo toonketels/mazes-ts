@@ -6,3 +6,4 @@ workflows:
     jobs:
       - node/test:
           version: 15.11.0
+          run-command: test:ci
