@@ -1,4 +1,4 @@
-import {createGrid} from "./grid";
+import {createGrid} from "../grid";
 
 describe("Grid", () => {
 

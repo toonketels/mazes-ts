@@ -1,5 +1,5 @@
-import {aCell} from "./__tests__/data";
-import {link, unlink} from "./linker";
+import {aCell} from "./data";
+import {link, unlink} from "../linker";
 
 describe("link", () => {
 
