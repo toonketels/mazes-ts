@@ -3,8 +3,17 @@
 Playing around with mazes in ts.
 
 ```
-yarn install
-yarn build
+# use the correct node version
+nvm use
+
+# ensure you have npm with workspaces support
+# ex: 7.8.0
+npm --version
 ```
 
-`yarn start` will run an animation of a maze being created.
+```
+npm install
+npm run build
+```
+
+`npm run start` will run an animation of a maze being created.

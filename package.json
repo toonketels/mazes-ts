@@ -2,16 +2,13 @@
   "name": "mazes-ts",
   "private": true,
   "scripts": {
-    "start": "cd mazes-cli && yarn start:ts",
-    "test": "yarn workspaces run test",
-    "clean": "yarn workspaces run clean",
-    "build": "yarn workspaces run build"
+    "start": "npm run start:ts --workspace=mazes-cli",
+    "test": "npm run test --workspaces",
+    "clean": "npm run clean --workspaces",
+    "build": "npm run build --workspaces"
   },
   "workspaces": [
     "mazes-lib",
     "mazes-cli"
-  ],
-  "dependencies": {
-    "lerna": "^4.0.0"
-  }
+  ]
 }
