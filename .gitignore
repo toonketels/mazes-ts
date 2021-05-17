@@ -6,6 +6,8 @@ __diff_output__
 /src/lib/__tests__/__files__/
 *.tsbuildinfo
 
+/reports
+
 .DS_Store
 
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio, WebStorm and Rider

@@ -8,4 +8,12 @@ module.exports = {
   "testMatch": [
     "**/?(*.)+(spec|test).+(ts|tsx|js)"
   ],
+    "reporters": [
+        "default",
+        [ "jest-junit", {
+            suiteName: "mazes lib tests",
+            outputDirectory: "../reports/junit/",
+            outputName: "mazesLib.xml"
+        } ]
+    ]
 };

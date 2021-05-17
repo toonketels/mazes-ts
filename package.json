@@ -4,12 +4,14 @@
   "scripts": {
     "start": "npm run start:ts --workspace=mazes-cli",
     "test": "npm run test --workspaces",
-    "test:ci": "npm run build && npm run test",
     "clean": "npm run clean --workspaces",
     "build": "npm run build --workspaces"
   },
   "workspaces": [
     "mazes-lib",
     "mazes-cli"
-  ]
+  ],
+  "devDependencies": {
+    "jest-junit": "^12.0.0"
+  }
 }
